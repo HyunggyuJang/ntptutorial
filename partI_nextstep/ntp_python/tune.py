@@ -110,7 +110,8 @@ class SupervisedDataset(Dataset):
     def __init__(self, data_path: str, tokenizer: transformers.PreTrainedTokenizer):
         super(SupervisedDataset, self).__init__()
         logging.warning("Loading data...")
-        list_data_dict = ndjson.load(data_path)
+        with open(data_path) as f:
+            list_data_dict = ndjson.load(f)
 
         logging.warning("Formatting inputs...")
         sources = [example['input'] for example in list_data_dict]
@@ -170,7 +171,7 @@ def train():
         cache_dir=training_args.cache_dir,
         model_max_length=training_args.model_max_length,
         padding_side="right",
-        use_fast=False,
+        use_fast=True,
     )
     special_tokens_dict = dict()
     if tokenizer.pad_token is None:
