@@ -118,3 +118,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.cosine
