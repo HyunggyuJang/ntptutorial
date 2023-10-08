@@ -1,12 +1,12 @@
-REPO_DIR=/path/to/ntptutorial
-TRAIN_FILE=${REPO_DIR}/data/leandojo_benchmark_4/processed/proofstep-train.jsonl
-VALID_FILE=${REPO_DIR}/data/leandojo_benchmark_4/processed/proofstep-val.jsonl
+REPO_DIR=".."
+TRAIN_FILE=${REPO_DIR}/data/processed/proofstep-train.jsonl
+VALID_FILE=${REPO_DIR}/data/processed/proofstep-val.jsonl
 MODEL=EleutherAI/pythia-2.8b-deduped
 CONFIG=${REPO_DIR}/scripts/ds_config.json
 
-OUTDIR=/path/to/output/ntptutorial/proofstep/${MODEL}
+OUTDIR=${REPO_DIR}/model/${MODEL}
 
-deepspeed --include localhost:0,1,2,3,4,5,6,7  ${REPO_DIR}/ntp/tune.py \
+deepspeed --include localhost:0,1,2,3,4,5,6,7  ${REPO_DIR}/ntp_python/tune.py \
     --deepspeed ${CONFIG} \
     --model_name_or_path ${MODEL} \
     --train_data_path ${TRAIN_FILE} \
