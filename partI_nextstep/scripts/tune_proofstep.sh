@@ -14,13 +14,13 @@ deepspeed ${REPO_DIR}/ntp_python/tune.py \
     --fp16 \
     --output_dir ${OUTDIR} \
     --num_train_epochs 10 \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
+    # --per_device_train_batch_size 4 \
+    # --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 2 \
-    --evaluation_strategy "steps" \
-    --eval_steps 500 \
-    --save_strategy "steps" \
-    --save_steps 500 \
+    # --evaluation_strategy "steps" \
+    # --eval_steps 500 \
+    # --save_strategy "steps" \
+    # --save_steps 500 \
     --save_total_limit 1 \
     --learning_rate 1e-5 \
     --load_best_model_at_end 1 \
