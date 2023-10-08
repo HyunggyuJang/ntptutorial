@@ -6,7 +6,7 @@ CONFIG=${REPO_DIR}/scripts/ds_config.json
 
 OUTDIR=${REPO_DIR}/model/${MODEL}
 
-deepspeed --include localhost:0,1,2,3,4,5,6,7  ${REPO_DIR}/ntp_python/tune.py \
+deepspeed ${REPO_DIR}/ntp_python/tune.py \
     --deepspeed ${CONFIG} \
     --model_name_or_path ${MODEL} \
     --train_data_path ${TRAIN_FILE} \
